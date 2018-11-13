@@ -659,4 +659,16 @@ public class Sudoku extends LatinSquare implements Serializable {
 
 		}
 	}
+	private static int PossibleValuesMultiplier(java.util.HashMap<java.lang.Integer,Sudoku.SudokuCell> cells) {
+		int difficultyScore = 1;
+		for (int row = 0; row < Math.sqrt(cells.size()); row++) {
+			for (int col = 0; col < Math.sqrt(cells.size()); col++) {
+				int multiplierValue = cells.get(Objects.hash(row,col)).getlstRemainingValidValues().size();
+				if (multiplierValue < 1)
+					multiplierValue = 1;
+				difficultyScore *= multiplierValue;
+			}
+		}
+		return difficultyScore;
+	}
 }
