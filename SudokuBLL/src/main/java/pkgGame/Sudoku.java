@@ -675,7 +675,7 @@ public class Sudoku extends LatinSquare implements Serializable {
 		return eGD.getiDifficulty() <= difficulty;
 	}
 	private void RemoveCells() {
-		 SetCells();
+		 setRemainingCells();
 		 boolean isDifficultyMet = IsDifficultyMet(PossibleValuesMultiplier(this.cells));
 		  while(isDifficultyMet){
 		   Random rand = new SecureRandom();
@@ -683,7 +683,7 @@ public class Sudoku extends LatinSquare implements Serializable {
 		   int iCol = rand.nextInt(this.iSize);
 		   this.getPuzzle()[iRow][iCol]=0;
 		   
-		   SetCells();
+		   setRemainingCells();
 		   isDifficultyMet = IsDifficultyMet(PossibleValuesMultiplier(this.cells));
 		  }
 		  
