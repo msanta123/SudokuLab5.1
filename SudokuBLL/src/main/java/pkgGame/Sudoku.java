@@ -659,6 +659,16 @@ public class Sudoku extends LatinSquare implements Serializable {
 
 		}
 	}
+	private void SetRemainingCells() {
+		for (int iRow = 0; iRow < iSize; iRow++) {
+			for (int iCol = 0; iCol < iSize; iCol++) {
+				SudokuCell myCell = new SudokuCell(iRow, iCol);
+				myCell.setlstValidValues(getAllValidCellValues(iCol, iRow));
+				myCell.ShuffleValidValues();
+				cells.put(myCell.hashCode(), myCell);
+			}
+		}
+	}
 	private static int PossibleValuesMultiplier(java.util.HashMap<java.lang.Integer,Sudoku.SudokuCell> cells) {
 		int difficultyScore = 1;
 		for (int row = 0; row < Math.sqrt(cells.size()); row++) {
