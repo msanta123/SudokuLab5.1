@@ -671,4 +671,7 @@ public class Sudoku extends LatinSquare implements Serializable {
 		}
 		return difficultyScore;
 	}
+	private boolean isDifficultyMet(int difficulty){
+		return eGD.getiDifficulty() <= difficulty;
+	}	
 }
